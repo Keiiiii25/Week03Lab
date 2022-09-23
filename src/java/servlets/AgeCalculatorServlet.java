@@ -9,6 +9,8 @@ import javax.servlet.http.HttpServletResponse;
 /**
  *
  * @author Keith
+ * 
+ * @version September 22, 2022
  */
 public class AgeCalculatorServlet extends HttpServlet {
 
@@ -29,23 +31,21 @@ public class AgeCalculatorServlet extends HttpServlet {
         if (age == null || age.equals("")) {
             message = "You must give your current age.";
             request.setAttribute("message", message);
-            getServletContext().getRequestDispatcher("/WEB-INF/agecalculator.jsp")
-                    .forward(request, response);
         } else {
             try {
                 int nextAge = Integer.parseInt(age) + 1;
                 message = "Your age next birthday will be " + nextAge;
 
                 request.setAttribute("message", message);
-                getServletContext().getRequestDispatcher("/WEB-INF/agecalculator.jsp")
-                        .forward(request, response);
             } catch (NumberFormatException e) {
                 message = "You must enter a number.";
-                
+
                 request.setAttribute("message", message);
                 getServletContext().getRequestDispatcher("/WEB-INF/agecalculator.jsp")
                         .forward(request, response);
             }
         }
+        getServletContext().getRequestDispatcher("/WEB-INF/agecalculator.jsp")
+                .forward(request, response);
     }
 }

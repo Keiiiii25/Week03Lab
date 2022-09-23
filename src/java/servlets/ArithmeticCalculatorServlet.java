@@ -9,6 +9,8 @@ import javax.servlet.http.HttpServletResponse;
 /**
  *
  * @author Keith
+ * 
+ * @version September 22, 2022
  */
 public class ArithmeticCalculatorServlet extends HttpServlet {
 
@@ -37,8 +39,6 @@ public class ArithmeticCalculatorServlet extends HttpServlet {
             invalid = "invalid";
 
             request.setAttribute("result", invalid);
-            getServletContext().getRequestDispatcher("/WEB-INF/arithmeticcalculator.jsp")
-                    .forward(request, response);
         } else {
             try {
                 int firstNum = Integer.parseInt(first);
@@ -69,9 +69,9 @@ public class ArithmeticCalculatorServlet extends HttpServlet {
                 getServletContext().getRequestDispatcher("/WEB-INF/arithmeticcalculator.jsp")
                         .forward(request, response);
             }
-            getServletContext().getRequestDispatcher("/WEB-INF/arithmeticcalculator.jsp")
-                    .forward(request, response);
         }
+        getServletContext().getRequestDispatcher("/WEB-INF/arithmeticcalculator.jsp")
+                .forward(request, response);
     }
 
 }
